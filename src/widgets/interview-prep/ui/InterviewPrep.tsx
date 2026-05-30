@@ -299,7 +299,7 @@ function ProcessingScreen({ numQuestions, selectedAgent, difficulty }: any) {
   };
 
   const getStepIndex = () => {
-    if (step === "input") return 0;
+    if (step === "idle") return 0;
     if (step === "processing" || step === "video") return 1;
     return 2; // reveal or results
   };
@@ -307,7 +307,7 @@ function ProcessingScreen({ numQuestions, selectedAgent, difficulty }: any) {
   const activeIndex = getStepIndex();
 
   const handleStepClick = (index: number) => {
-    if (index === 0) setStep("input");
+    if (index === 0) setStep("idle");
     if (index === 1 && jobDescription.trim()) setStep(mode === "text" ? "results" : "video"); // Skip processing if going back
     if (index === 2 && jobDescription.trim()) setStep("results");
   };
@@ -583,7 +583,7 @@ function ProcessingScreen({ numQuestions, selectedAgent, difficulty }: any) {
                       setHasCompletedVideoMock(false);
                       setSelectedQuestionIds([]);
                     } else {
-                      setStep("input");
+                      setStep("idle");
                     }
                   }}
                 >
