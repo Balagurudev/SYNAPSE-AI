@@ -10,6 +10,7 @@ import { InterviewQuestion } from "@/entities/question/model/types";
 import { Label } from "@/shared/ui/label";
 import { Badge } from "@/shared/ui/badge";
 import { ConfidenceReveal } from "@/features/confidence-reveal/ui/ConfidenceReveal";
+import { StandaloneMascot } from "@/features/confidence-reveal/ui/Mascot3D";
 import { Check } from "lucide-react";
 
 export function InterviewPrep() {
@@ -205,23 +206,23 @@ function ProcessingScreen({ numQuestions, selectedAgent, difficulty }: any) {
         @keyframes loader-combined {
           0% {
             transform: rotate(90deg);
-            box-shadow: 0 6px 12px 0 #8b5cf6 inset, 0 12px 18px 0 #6d28d9 inset, 0 36px 36px 0 #4c1d95 inset, 0 0 3px 1.2px rgba(139, 92, 246, 0.3), 0 0 6px 1.8px rgba(109, 40, 217, 0.2);
+            box-shadow: 0 4px 12px 0 rgba(139, 92, 246, 0.2) inset, 0 8px 18px 0 rgba(109, 40, 217, 0.2) inset, 0 0 4px 1px rgba(139, 92, 246, 0.1);
           }
           25% {
             transform: rotate(180deg);
-            box-shadow: 0 6px 12px 0 #a78bfa inset, 0 12px 18px 0 #8b5cf6 inset, 0 36px 36px 0 #6d28d9 inset, 0 0 6px 2.4px rgba(139, 92, 246, 0.3), 0 0 12px 3.6px rgba(109, 40, 217, 0.2), 0 0 18px 6px rgba(76, 29, 149, 0.15);
+            box-shadow: 0 4px 12px 0 rgba(167, 139, 250, 0.2) inset, 0 8px 18px 0 rgba(139, 92, 246, 0.2) inset, 0 0 4px 1px rgba(139, 92, 246, 0.1);
           }
           50% {
             transform: rotate(270deg);
-            box-shadow: 0 6px 12px 0 #c4b5fd inset, 0 12px 6px 0 #8b5cf6 inset, 0 24px 36px 0 #6d28d9 inset, 0 0 3px 1.2px rgba(139, 92, 246, 0.3), 0 0 6px 1.8px rgba(109, 40, 217, 0.2);
+            box-shadow: 0 4px 12px 0 rgba(196, 181, 253, 0.2) inset, 0 8px 18px 0 rgba(139, 92, 246, 0.2) inset, 0 0 4px 1px rgba(139, 92, 246, 0.1);
           }
           75% {
             transform: rotate(360deg);
-            box-shadow: 0 6px 12px 0 #8b5cf6 inset, 0 12px 18px 0 #7c3aed inset, 0 36px 36px 0 #5b21b6 inset, 0 0 6px 2.4px rgba(139, 92, 246, 0.3), 0 0 12px 3.6px rgba(109, 40, 217, 0.2), 0 0 18px 6px rgba(76, 29, 149, 0.15);
+            box-shadow: 0 4px 12px 0 rgba(139, 92, 246, 0.2) inset, 0 8px 18px 0 rgba(124, 58, 237, 0.2) inset, 0 0 4px 1px rgba(139, 92, 246, 0.1);
           }
           100% {
             transform: rotate(450deg);
-            box-shadow: 0 6px 12px 0 #8b5cf6 inset, 0 12px 18px 0 #6d28d9 inset, 0 36px 36px 0 #4c1d95 inset, 0 0 3px 1.2px rgba(139, 92, 246, 0.3), 0 0 6px 1.8px rgba(109, 40, 217, 0.2);
+            box-shadow: 0 4px 12px 0 rgba(139, 92, 246, 0.2) inset, 0 8px 18px 0 rgba(109, 40, 217, 0.2) inset, 0 0 4px 1px rgba(139, 92, 246, 0.1);
           }
         }
         .loader-letter {
@@ -230,7 +231,7 @@ function ProcessingScreen({ numQuestions, selectedAgent, difficulty }: any) {
           transform: translateY(0);
           animation: loader-letter-anim 2.4s infinite;
           z-index: 1;
-          white-space: pre;
+          white-space: pre-wrap;
         }
         @keyframes loader-letter-anim {
           0%, 100% { opacity: 0.4; transform: translateY(0); }
@@ -250,15 +251,17 @@ function ProcessingScreen({ numQuestions, selectedAgent, difficulty }: any) {
               transition={{ duration: 0.2 }}
               className="absolute inset-0 flex items-center justify-center text-center w-full px-[16px] leading-tight"
             >
-              {currentText.split('').map((char, i) => (
-                <span 
-                  key={i} 
-                  className="loader-letter" 
-                  style={{ animationDelay: `${i * 0.05}s` }}
-                >
-                  {char === ' ' ? '\u00A0' : char}
-                </span>
-              ))}
+              <div className="flex flex-wrap items-center justify-center">
+                {currentText.split('').map((char, i) => (
+                  <span 
+                    key={i} 
+                    className="loader-letter" 
+                    style={{ animationDelay: `${i * 0.05}s` }}
+                  >
+                    {char === ' ' ? ' ' : char}
+                  </span>
+                ))}
+              </div>
             </motion.div>
           </AnimatePresence>
           <div className="loader-circle"></div>
@@ -546,8 +549,8 @@ function ProcessingScreen({ numQuestions, selectedAgent, difficulty }: any) {
                         exit={{ opacity: 0 }}
                         className="h-full flex flex-col items-center justify-center text-center"
                       >
-                        <div className="w-[48px] h-[48px] rounded-[12px] border border-gray-200 bg-white flex items-center justify-center shadow-sm mb-[16px]">
-                          <Bot className="w-[24px] h-[24px] text-gray-400" />
+                        <div className="w-[120px] h-[120px] flex items-center justify-center mb-[24px] relative">
+                          <StandaloneMascot />
                         </div>
                         <h3 className="text-[18px] font-semibold text-gray-900 mb-[8px]">Synapse AI is Ready</h3>
                         <p className="text-[14px] text-gray-500 max-w-[320px]">

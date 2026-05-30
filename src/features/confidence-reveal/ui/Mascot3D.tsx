@@ -207,6 +207,16 @@ function RobotHead({ expression, color }: { expression: string, color: string })
               <circle cx="65" cy="25" r="4" fill="currentColor" className="animate-pulse" style={{ animationDelay: "400ms" }} />
             </svg>
           )}
+          {expression === "wink" && (
+            <svg viewBox="0 0 100 50" className="w-full h-full relative z-10">
+              {/* Left Eye: Tilted oval */}
+              <ellipse cx="30" cy="23" rx="6" ry="4.5" fill="currentColor" transform="rotate(-15 30 23)" />
+              {/* Right Eye: Clean Stylized Wink (Continuous path to avoid blobbing) */}
+              <path d="M 64 21 L 74 25 L 64 29" fill="none" stroke="currentColor" strokeWidth="4.5" strokeLinecap="round" strokeLinejoin="round" />
+              {/* Happy Smile */}
+              <path d="M 40 37 Q 50 43 58 36" fill="none" stroke="currentColor" strokeWidth="4.5" strokeLinecap="round" />
+            </svg>
+          )}
           {expression === "suspense" && (
             <svg viewBox="0 0 100 50" className="w-full h-full relative z-10">
               {/* Wide open eyes centered at x=30, x=70 */}
@@ -322,6 +332,24 @@ export function Mascot3D({ score, phase }: MascotProps) {
           
           <HologramBase color={color} />
         </group>
+      </Canvas>
+    </div>
+  );
+}
+
+// Export a standalone version of the mascot (just the head) without the base or laser
+export function StandaloneMascot() {
+  return (
+    <div className="w-full h-full pointer-events-none">
+      <Canvas camera={{ position: [0, 0, 3.5], fov: 45 }}>
+        <ambientLight intensity={0.5} />
+        <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} intensity={1} castShadow />
+        <pointLight position={[-10, -10, -10]} intensity={0.5} />
+        <Environment preset="city" />
+        <Float speed={2} rotationIntensity={0.1} floatIntensity={0.5}>
+          {/* We pass the 'wink' expression and the primary purple color */}
+          <RobotHead expression="wink" color="#7e22ce" />
+        </Float>
       </Canvas>
     </div>
   );
