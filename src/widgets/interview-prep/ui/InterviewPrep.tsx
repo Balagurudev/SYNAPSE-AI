@@ -206,23 +206,23 @@ function ProcessingScreen({ numQuestions, selectedAgent, difficulty }: any) {
         @keyframes loader-combined {
           0% {
             transform: rotate(90deg);
-            box-shadow: 0 4px 12px 0 rgba(139, 92, 246, 0.2) inset, 0 8px 18px 0 rgba(109, 40, 217, 0.2) inset, 0 0 4px 1px rgba(139, 92, 246, 0.1);
+            box-shadow: 0 4px 16px 0 rgba(139, 92, 246, 0.5) inset, 0 8px 24px 0 rgba(109, 40, 217, 0.4) inset, 0 0 8px 2px rgba(139, 92, 246, 0.2);
           }
           25% {
             transform: rotate(180deg);
-            box-shadow: 0 4px 12px 0 rgba(167, 139, 250, 0.2) inset, 0 8px 18px 0 rgba(139, 92, 246, 0.2) inset, 0 0 4px 1px rgba(139, 92, 246, 0.1);
+            box-shadow: 0 4px 16px 0 rgba(167, 139, 250, 0.5) inset, 0 8px 24px 0 rgba(139, 92, 246, 0.4) inset, 0 0 8px 2px rgba(139, 92, 246, 0.2);
           }
           50% {
             transform: rotate(270deg);
-            box-shadow: 0 4px 12px 0 rgba(196, 181, 253, 0.2) inset, 0 8px 18px 0 rgba(139, 92, 246, 0.2) inset, 0 0 4px 1px rgba(139, 92, 246, 0.1);
+            box-shadow: 0 4px 16px 0 rgba(196, 181, 253, 0.5) inset, 0 8px 24px 0 rgba(139, 92, 246, 0.4) inset, 0 0 8px 2px rgba(139, 92, 246, 0.2);
           }
           75% {
             transform: rotate(360deg);
-            box-shadow: 0 4px 12px 0 rgba(139, 92, 246, 0.2) inset, 0 8px 18px 0 rgba(124, 58, 237, 0.2) inset, 0 0 4px 1px rgba(139, 92, 246, 0.1);
+            box-shadow: 0 4px 16px 0 rgba(139, 92, 246, 0.5) inset, 0 8px 24px 0 rgba(124, 58, 237, 0.4) inset, 0 0 8px 2px rgba(139, 92, 246, 0.2);
           }
           100% {
             transform: rotate(450deg);
-            box-shadow: 0 4px 12px 0 rgba(139, 92, 246, 0.2) inset, 0 8px 18px 0 rgba(109, 40, 217, 0.2) inset, 0 0 4px 1px rgba(139, 92, 246, 0.1);
+            box-shadow: 0 4px 16px 0 rgba(139, 92, 246, 0.5) inset, 0 8px 24px 0 rgba(109, 40, 217, 0.4) inset, 0 0 8px 2px rgba(139, 92, 246, 0.2);
           }
         }
         .loader-letter {
